@@ -1,0 +1,16 @@
+{
+    "name": "derelict-nuklear",
+    "description": "A dynamic binding to the nuklear library.",
+    "homepage": "https://github.com/Extrawurst/DerelictNuklear",
+    "license": "MIT",
+    "authors": [
+        "Stephan Dilly"
+    ],
+
+    "targetName": "DerelictLibui",
+    "targetPath": "lib",
+
+    "dependencies": {
+        "derelict-util": ">=2.0.6"
+    }
+}
