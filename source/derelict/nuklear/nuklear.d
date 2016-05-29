@@ -31,10 +31,16 @@
  */
 module derelict.nuklear.nuklear;
 
+version = NK_INCLUDE_VERTEX_BUFFER_OUTPUT;
+version = NK_INCLUDE_STANDARD_IO;
+version = NK_INCLUDE_DEFAULT_FONT;
+version = NK_INCLUDE_DEFAULT_ALLOCATOR;
+
 public
 {
     import derelict.nuklear.types;
     import derelict.nuklear.funcs;
+    import derelict.nuklear.consts;
 }
 
 private
@@ -59,10 +65,31 @@ class DerelictNuklearLoader : SharedLibLoader
     {
         override void loadSymbols()
         {          
+            version(NK_INCLUDE_DEFAULT_ALLOCATOR)
+            bindFunc(cast(void**)&nk_init_default, "nk_init_default");
             bindFunc(cast(void**)&nk_init_fixed, "nk_init_fixed");
 
             bindFunc(cast(void**)&nk_begin, "nk_begin");
             bindFunc(cast(void**)&nk_end, "nk_end");
+
+            bindFunc(cast(void**)&nk_handle_id, "nk_handle_id");
+
+            version(NK_INCLUDE_DEFAULT_ALLOCATOR)
+            bindFunc(cast(void**)&nk_font_atlas_init_default, "nk_font_atlas_init_default");
+            bindFunc(cast(void**)&nk_font_atlas_init, "nk_font_atlas_init");
+            bindFunc(cast(void**)&nk_font_atlas_begin, "nk_font_atlas_begin");
+            bindFunc(cast(void**)&nk_font_config_, "nk_font_config");
+            bindFunc(cast(void**)&nk_font_atlas_add, "nk_font_atlas_add");
+            version(NK_INCLUDE_DEFAULT_FONT)
+            bindFunc(cast(void**)&nk_font_atlas_add_default, "nk_font_atlas_add_default");
+            bindFunc(cast(void**)&nk_font_atlas_add_from_memory, "nk_font_atlas_add_from_memory");
+            version(NK_INCLUDE_STANDARD_IO)
+            bindFunc(cast(void**)&nk_font_atlas_add_from_file, "nk_font_atlas_add_from_file");
+            bindFunc(cast(void**)&nk_font_atlas_add_compressed, "nk_font_atlas_add_compressed");
+            bindFunc(cast(void**)&nk_font_atlas_add_compressed_base85, "nk_font_atlas_add_compressed_base85");
+            bindFunc(cast(void**)&nk_font_atlas_bake, "nk_font_atlas_bake");
+            bindFunc(cast(void**)&nk_font_atlas_end, "nk_font_atlas_end");
+            bindFunc(cast(void**)&nk_font_atlas_clear, "nk_font_atlas_clear");
         }
     }
 
