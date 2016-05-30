@@ -32,7 +32,8 @@
             "targetPath": "examples/bin",
             "targetType": "executable",
             "workingDirectory": "examples/bin",
-            "mainSourceFile": "examples/glew/app.d",
+            "sourcePaths": ["examples/glfw", "source"],
+            "mainSourceFile": "examples/glfw/app.d",
 
             "dependencies": {
                 "derelict-glfw3": "~>1.1.0",
