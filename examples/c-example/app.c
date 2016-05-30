@@ -24,7 +24,7 @@ void main()
      * e.g.: ctx->style.font.height = 20. */
     nk_font_atlas_init_default(&atlas);
     nk_font_atlas_begin(&atlas);
-    struct nk_font* font = nk_font_atlas_add_from_file(&atlas, "../nuklear/extra_font/Roboto-Regular.ttf", 14.0f, &cfg);
+    struct nk_font* font = nk_font_atlas_add_from_file(&atlas, "../../nuklear/extra_font/Roboto-Regular.ttf", 14.0f, &cfg);
     const void* image = nk_font_atlas_bake(&atlas, &w, &h, NK_FONT_ATLAS_RGBA32);
     //device_upload_atlas(&device, image, w, h);
     nk_font_atlas_end(&atlas, nk_handle_id(0), 0);

@@ -7,7 +7,6 @@
         "Stephan Dilly"
     ],
 
-    "targetName": "DerelictLibui",
     "targetPath": "lib",
     "targetType": "library",
 
@@ -20,10 +19,25 @@
             "name": "lib"
         },
         {
-            "name": "example",
-            "targetPath": "example",
+            "name": "minimal",
+            "targetName": "minimal",
+            "targetPath": "examples/bin",
             "targetType": "executable",
-            "mainSourceFile": "example/app.d"
+            "workingDirectory": "examples/bin",
+            "mainSourceFile": "examples/minimal/app.d"
+        },
+        {
+            "name": "demo",
+            "targetName": "demo",
+            "targetPath": "examples/bin",
+            "targetType": "executable",
+            "workingDirectory": "examples/bin",
+            "mainSourceFile": "examples/glew/app.d",
+
+            "dependencies": {
+                "derelict-glfw3": "~>1.1.0",
+                "derelict-gl3": "~>1.0.13",
+            },
         }
     ]
 }
