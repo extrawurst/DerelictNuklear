@@ -8,8 +8,12 @@
 #define NK_IMPLEMENTATION
 #include "../nuklear/nuklear.h"
 
+#include <stdio.h>
+
 void main()
 {
+    printf("%lu",sizeof(struct nk_context));
+
     struct nk_font_atlas atlas;
     int w, h;
 

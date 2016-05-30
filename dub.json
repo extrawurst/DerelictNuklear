@@ -21,6 +21,7 @@
         },
         {
             "name": "example",
+            "targetPath": "example",
             "targetType": "executable",
             "mainSourceFile": "example/app.d"
         }

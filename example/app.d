@@ -2,15 +2,28 @@
 
 import derelict.nuklear.nuklear;
 
+static assert(nk_context.sizeof == 13120);
+
 int main()
 {
     DerelictNuklear.load();
 
-    ubyte[] memory = new ubyte[1024 * 1024];
+    nk_font_atlas atlas;
+    int w, h;
+
+    nk_font_config cfg = nk_font_config_(0.0f);
+    cfg.oversample_h = 3; cfg.oversample_v = 2;
+    nk_font_atlas_init_default(&atlas);
+    nk_font_atlas_begin(&atlas);
+    nk_font* font = nk_font_atlas_add_from_file(&atlas, "../nuklear/extra_font/Roboto-Regular.ttf", 14.0f, &cfg);
+    auto image = nk_font_atlas_bake(&atlas, &w, &h, NK_FONT_ATLAS_RGBA32);
+    nk_font_atlas_end(&atlas, nk_handle_id(0), null);
+
+    assert(font);
 
     /* init gui state */
     nk_context ctx;
-    nk_init_fixed(&ctx, memory.ptr, memory.length, null);
+    nk_init_default(&ctx, &font.handle);
 
     enum {EASY, HARD}
     int op = EASY;
@@ -20,30 +33,7 @@ int main()
     nk_panel layout;
     nk_begin(&ctx, &layout, "Show", nk_rect(50, 50, 220, 220),
         NK_WINDOW_BORDER|NK_WINDOW_MOVABLE|NK_WINDOW_CLOSABLE);
-    /+
-    {
-        /* fixed widget pixel width */
-        nk_layout_row_static(&ctx, 30, 80, 1);
-        if (nk_button_text(&ctx, "button", NK_BUTTON_DEFAULT)) {
-            /* event handling */
-        }
-
-        /* fixed widget window ratio width */
-        nk_layout_row_dynamic(&ctx, 30, 2);
-        if (nk_option(&ctx, "easy", op == EASY)) op = EASY;
-        if (nk_option(&ctx, "hard", op == HARD)) op = HARD;
-
-        /* custom widget pixel width */
-        nk_layout_row_begin(&ctx, NK_STATIC, 30, 2);
-        {
-            nk_layout_row_push(&ctx, 50);
-            nk_label(&ctx, "Volume:", NK_TEXT_LEFT);
-            nk_layout_row_push(&ctx, 110);
-            nk_slider_float(&ctx, 0, &value, 1.0f, 0.1f);
-        }
-        nk_layout_row_end(&ctx);
-    }
-    +/
+    
     nk_end(&ctx);
 
     DerelictNuklear.unload();

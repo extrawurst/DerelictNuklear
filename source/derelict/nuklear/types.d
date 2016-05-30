@@ -38,8 +38,6 @@ version = NK_INCLUDE_STANDARD_IO;
 version = NK_INCLUDE_DEFAULT_FONT;
 version = NK_INCLUDE_DEFAULT_ALLOCATOR;
 
-align(1):
-
 alias cstring = const(char)*;
 
 alias uint32_t = uint;
@@ -807,6 +805,7 @@ struct nk_font_atlas {
 }
 
 immutable NK_VALUE_PAGE_CAPACITY  = (nk_window.sizeof / nk_uint.sizeof / 2);
+
 struct nk_table {
     uint seq;
     nk_hash[NK_VALUE_PAGE_CAPACITY] keys;
