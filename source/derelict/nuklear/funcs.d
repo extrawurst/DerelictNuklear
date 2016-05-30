@@ -48,6 +48,12 @@ extern(C) nothrow
     version(NK_INCLUDE_DEFAULT_ALLOCATOR)
     alias da_nk_init_default = int function(nk_context*, const(nk_user_font)*);
     alias da_nk_init_fixed = int function(nk_context*, void* memory, nk_size size, const nk_user_font*);
+    alias da_nk_init_custom = int function(nk_context*, nk_buffer *cmds, nk_buffer *pool, const(nk_user_font)*);
+    alias da_nk_init = int function(nk_context*, nk_allocator*, const(nk_user_font)*);
+    alias da_nk_clear = void function(nk_context*);
+    alias da_nk_free = void function(nk_context*);
+    version(NK_INCLUDE_COMMAND_USERDATA)
+    alias da_nk_set_user_data = void function(nk_context*, nk_handle handle);
 
     alias da_nk_begin = int function(nk_context*, nk_panel*, cstring title, nk_rect bounds, nk_flags flags);
     alias da_nk_end = void function(nk_context*);
@@ -78,6 +84,12 @@ __gshared
     version(NK_INCLUDE_DEFAULT_ALLOCATOR)
     da_nk_init_default nk_init_default;
     da_nk_init_fixed nk_init_fixed;
+    da_nk_init_custom nk_init_custom;
+    da_nk_init nk_init;
+    da_nk_clear nk_clear;
+    da_nk_free nk_free;
+    version(NK_INCLUDE_COMMAND_USERDATA)
+    da_nk_set_user_data nk_set_user_data;
     
     da_nk_begin nk_begin;
     da_nk_end nk_end;

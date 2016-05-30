@@ -25,16 +25,13 @@ int main()
     nk_context ctx;
     nk_init_default(&ctx, &font.handle);
 
-    enum {EASY, HARD}
-    int op = EASY;
-    float value = 0.6f;
-    int i =  20;
-
     nk_panel layout;
     nk_begin(&ctx, &layout, "Show", nk_rect(50, 50, 220, 220),
         NK_WINDOW_BORDER|NK_WINDOW_MOVABLE|NK_WINDOW_CLOSABLE);
     
     nk_end(&ctx);
+
+    nk_free(&ctx);
 
     DerelictNuklear.unload();
 

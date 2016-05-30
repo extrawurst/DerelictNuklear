@@ -68,6 +68,12 @@ class DerelictNuklearLoader : SharedLibLoader
             version(NK_INCLUDE_DEFAULT_ALLOCATOR)
             bindFunc(cast(void**)&nk_init_default, "nk_init_default");
             bindFunc(cast(void**)&nk_init_fixed, "nk_init_fixed");
+            bindFunc(cast(void**)&nk_init_custom, "nk_init_custom");
+            bindFunc(cast(void**)&nk_init, "nk_init");
+            bindFunc(cast(void**)&nk_clear, "nk_clear");
+            bindFunc(cast(void**)&nk_free, "nk_free");
+            version(NK_INCLUDE_COMMAND_USERDATA)
+            bindFunc(cast(void**)&nk_set_user_data, "nk_set_user_data");
 
             bindFunc(cast(void**)&nk_begin, "nk_begin");
             bindFunc(cast(void**)&nk_end, "nk_end");
