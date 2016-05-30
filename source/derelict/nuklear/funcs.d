@@ -60,6 +60,16 @@ extern(C) nothrow
 
     alias da_nk_handle_id = nk_handle function(int);
 
+    alias da_nk_button_text = int function(nk_context *ctx, cstring title, int len, nk_button_behavior);
+    alias da_nk_button_label = int function(nk_context *ctx, cstring title, nk_button_behavior);
+    alias da_nk_button_color = int function(nk_context*, nk_color, nk_button_behavior);
+    alias da_nk_button_symbol = int function(nk_context*, nk_symbol_type, nk_button_behavior);
+    alias da_nk_button_image = int function(nk_context*, nk_image img, nk_button_behavior);
+    alias da_nk_button_symbol_label = int function(nk_context*, nk_symbol_type, cstring , nk_flags text_alignment, nk_button_behavior);
+    alias da_nk_button_symbol_text = int function(nk_context*, nk_symbol_type, cstring , int, nk_flags alignment, nk_button_behavior);
+    alias da_nk_button_image_label = int function(nk_context*, nk_image img, cstring , nk_flags text_alignment, nk_button_behavior);
+    alias da_nk_button_image_text = int function(nk_context*, nk_image img, cstring , int, nk_flags alignment, nk_button_behavior);
+
     version(NK_INCLUDE_DEFAULT_ALLOCATOR)
     alias da_nk_font_atlas_init_default = void function(nk_font_atlas*);
     alias da_nk_font_atlas_init = void function(nk_font_atlas*, nk_allocator*);
@@ -95,6 +105,16 @@ __gshared
     da_nk_end nk_end;
 
     da_nk_handle_id nk_handle_id;
+
+    da_nk_button_text nk_button_text;
+    da_nk_button_label nk_button_label;
+    da_nk_button_color nk_button_color;
+    da_nk_button_symbol nk_button_symbol;
+    da_nk_button_image nk_button_image;
+    da_nk_button_symbol_label nk_button_symbol_label;
+    da_nk_button_symbol_text nk_button_symbol_text;
+    da_nk_button_image_label nk_button_image_label;
+    da_nk_button_image_text nk_button_image_text;
 
     version(NK_INCLUDE_DEFAULT_ALLOCATOR)
     da_nk_font_atlas_init_default nk_font_atlas_init_default;

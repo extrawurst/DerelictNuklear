@@ -80,6 +80,16 @@ class DerelictNuklearLoader : SharedLibLoader
 
             bindFunc(cast(void**)&nk_handle_id, "nk_handle_id");
 
+            bindFunc(cast(void**)&nk_button_text, "nk_button_text");
+            bindFunc(cast(void**)&nk_button_label, "nk_button_label");
+            bindFunc(cast(void**)&nk_button_color, "nk_button_color");
+            bindFunc(cast(void**)&nk_button_symbol, "nk_button_symbol");
+            bindFunc(cast(void**)&nk_button_image, "nk_button_image");
+            bindFunc(cast(void**)&nk_button_symbol_label, "nk_button_symbol_label");
+            bindFunc(cast(void**)&nk_button_symbol_text, "nk_button_symbol_text");
+            bindFunc(cast(void**)&nk_button_image_label, "nk_button_image_label");
+            bindFunc(cast(void**)&nk_button_image_text, "nk_button_image_text");
+
             version(NK_INCLUDE_DEFAULT_ALLOCATOR)
             bindFunc(cast(void**)&nk_font_atlas_init_default, "nk_font_atlas_init_default");
             bindFunc(cast(void**)&nk_font_atlas_init, "nk_font_atlas_init");

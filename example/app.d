@@ -29,6 +29,8 @@ int main()
     nk_begin(&ctx, &layout, "Show", nk_rect(50, 50, 220, 220),
         NK_WINDOW_BORDER|NK_WINDOW_MOVABLE|NK_WINDOW_CLOSABLE);
     
+    nk_button_label(&ctx, "Push me", NK_BUTTON_DEFAULT);
+    
     nk_end(&ctx);
 
     nk_free(&ctx);
