@@ -19,3 +19,4 @@ all: nuklear
 nuklear:
 	rm -f $(OUTNAME) $(OBJS)
 	$(CC) $(CFLAGS) -o $(OUTNAME) libnuklear.c
+	cp $(OUTNAME) ../examples/bin
